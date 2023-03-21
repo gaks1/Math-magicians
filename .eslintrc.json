@@ -13,6 +13,7 @@
         "sourceType": "module"
     },
     "extends": [
+         "react-app",
         "airbnb",
         "plugin:react/recommended",
         "plugin:react-hooks/recommended"
