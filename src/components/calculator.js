@@ -9,7 +9,7 @@ function Calculator() {
       <CalculatorButtons button={['4', '5', '5', '-']} />
       <CalculatorButtons button={['1', '2', '3', '+']} />
       <div className="row">
-        <button type="button" className="left-button zero">1</button>
+        <button type="button" className="left-button zero">0</button>
         <button type="button" className="left-button dot">.</button>
         <button type="button" className="right-button">=</button>
       </div>
