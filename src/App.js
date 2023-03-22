@@ -1,5 +1,5 @@
 import './App.css';
-import Calculator from './components/Calculator';// eslint-disable-line
+import Calculator from './components/Calculator';
 
 function App() {
   return (
