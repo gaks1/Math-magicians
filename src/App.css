@@ -2,6 +2,14 @@ body {
   background-color: #f0f0f0;
 }
 
+.calcPage{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #f0f0f0;
+  margin-top: 10%;
+}
+
 .calculator {
   width: 400px;
   margin: 0 auto;
@@ -58,4 +66,70 @@ button:active {
 
 .dot {
   width: 100px;
+}
+
+.active {
+  color: #57af4b;
+}
+
+nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  padding: 0 20px;
+}
+
+nav ul{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 20px;
+}
+
+nav li{
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav a{
+  text-decoration: none;
+  color: #000;
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+nav a:hover{
+  color: #57af4b;
+}
+
+.quote{
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  font-size: 30px;
+  padding: 0 5%;
+}
+
+.homeParagraph{
+  margin-top: 5%;
+  font-size: 18px;
+}
+
+.homeTitle{
+  margin-top: 5%;
+  font-size: 33px;
+}
+
+.home{
+  padding: 0 5%;
+}
+
+.navTitle{
+  font-size: 30px;
 }

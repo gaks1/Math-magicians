@@ -41,10 +41,9 @@ function Quote() {
 
   return (
     <div className="quote">
-      <h1>Quote of the day</h1>
-      <p>{ quote }</p>
+      <p className="quote">{ quote }</p>
       { isLoading ? <p>Loading...</p> : null }
-      { hasError && !isLoading ? <p>Something went wrong</p> : null }
+      { hasError ? <p>Something went wrong</p> : null }
     </div>
   );
 }
