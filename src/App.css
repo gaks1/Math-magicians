@@ -7,7 +7,7 @@ body {
   justify-content: center;
   width: 100%;
   background-color: #f0f0f0;
-  margin-top: 10%;
+  margin-top: 50px;
 }
 
 .calculator {
@@ -117,7 +117,7 @@ nav a:hover {
 }
 
 .homeParagraph {
-  margin-top: 5%;
+  margin-top: 20px;
   font-size: 18px;
 }
 
