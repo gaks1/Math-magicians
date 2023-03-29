@@ -172,3 +172,18 @@ exports[`Calculator renders correctly 1`] = `
   </div>
 </div>
 `;
+
+exports[`operate matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="quote"
+  >
+    <p
+      class="quote"
+    />
+    <p>
+      Loading...
+    </p>
+  </div>
+</DocumentFragment>
+`;

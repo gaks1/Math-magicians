@@ -5,14 +5,14 @@ import calculate from '../logic/Calculate';
 import operate from '../logic/Operate';
 import '@testing-library/jest-dom';
 import Calculator from './Calculator';
+import Quote from './Quote';
 
-describe('Calculator',
-  () => {
-    it('renders correctly', () => {
-      const tree = renderer.create(<Calculator />).toJSON();
-      expect(tree).toMatchSnapshot();
-    });
+describe('Calculator', () => {
+  it('renders correctly', () => {
+    const tree = renderer.create(<Calculator />).toJSON();
+    expect(tree).toMatchSnapshot();
   });
+});
 
 describe('Calculator component', () => {
   beforeEach(() => {
@@ -25,21 +25,35 @@ describe('Calculator component', () => {
   });
 
   test('renders calculator with AC', () => {
-    fireEvent.click(screen.getAllByText('1').find((el) => el.tagName === 'BUTTON'));
-    fireEvent.click(screen.getAllByText('AC').find((el) => el.tagName === 'BUTTON'));
+    fireEvent.click(
+      screen.getAllByText('1').find((el) => el.tagName === 'BUTTON')
+    );
+    fireEvent.click(
+      screen.getAllByText('AC').find((el) => el.tagName === 'BUTTON')
+    );
     expect(screen.getByTestId('display').textContent).toBe('0');
   });
 
   test('renders calculator with 1', () => {
-    fireEvent.click(screen.getAllByText('1').find((el) => el.tagName === 'BUTTON'));
+    fireEvent.click(
+      screen.getAllByText('1').find((el) => el.tagName === 'BUTTON')
+    );
     expect(screen.getByTestId('display').textContent).toBe('1');
   });
 
   test('renders calculator with 1 + 1', () => {
-    fireEvent.click(screen.getAllByText('1').find((el) => el.tagName === 'BUTTON'));
-    fireEvent.click(screen.getAllByText('+').find((el) => el.tagName === 'BUTTON'));
-    fireEvent.click(screen.getAllByText('1').find((el) => el.tagName === 'BUTTON'));
-    fireEvent.click(screen.getAllByText('=').find((el) => el.tagName === 'BUTTON'));
+    fireEvent.click(
+      screen.getAllByText('1').find((el) => el.tagName === 'BUTTON')
+    );
+    fireEvent.click(
+      screen.getAllByText('+').find((el) => el.tagName === 'BUTTON')
+    );
+    fireEvent.click(
+      screen.getAllByText('1').find((el) => el.tagName === 'BUTTON')
+    );
+    fireEvent.click(
+      screen.getAllByText('=').find((el) => el.tagName === 'BUTTON')
+    );
     expect(screen.getByTestId('display').textContent).toBe('2');
   });
 });
@@ -97,40 +111,33 @@ describe('Calculate function', () => {
 });
 
 describe('operate', () => {
-  test('adding',
-    () => {
-      expect(operate(1, 2, '+')).toBe('3');
-    });
+  test('adding', () => {
+    expect(operate(1, 2, '+')).toBe('3');
+  });
 
-  test('subtracting',
-    () => {
-      expect(operate(1, 2, '-')).toBe('-1');
-    });
+  test('subtracting', () => {
+    expect(operate(1, 2, '-')).toBe('-1');
+  });
 
-  test('multiplying',
-    () => {
-      expect(operate(1, 2, 'x')).toBe('2');
-    });
+  test('multiplying', () => {
+    expect(operate(1, 2, 'x')).toBe('2');
+  });
 
-  test('dividing',
-    () => {
-      expect(operate(1, 2, '÷')).toBe('0.5');
-    });
+  test('dividing', () => {
+    expect(operate(1, 2, '÷')).toBe('0.5');
+  });
 
-  test('dividing by zero',
-    () => {
-      expect(operate(1, 0, '÷')).toBe("Can't divide by 0.");
-    });
+  test('dividing by zero', () => {
+    expect(operate(1, 0, '÷')).toBe("Can't divide by 0.");
+  });
 
-  test('modulus',
-    () => {
-      expect(operate(1, 2, '%')).toBe('1');
-    });
+  test('modulus', () => {
+    expect(operate(1, 2, '%')).toBe('1');
+  });
 
-  test('modulus by zero',
-    () => {
-      expect(operate(1, 0, '%')).toBe("Can't find modulo as can't divide by 0.");
-    });
+  test('modulus by zero', () => {
+    expect(operate(1, 0, '%')).toBe("Can't find modulo as can't divide by 0.");
+  });
 
   test('invalid operator', () => {
     let errorThrown = false;
@@ -141,5 +148,22 @@ describe('operate', () => {
       expect(err.message).toBe("Unknown operation '/'");
     }
     expect(errorThrown).toBe(true);
+  });
+
+  test('matches snapshot', () => {
+    const { asFragment } = render(<Quote />);
+    expect(asFragment()).toMatchSnapshot();
+  });
+  test('renders quote after loading data', async () => {
+    const mockData = [{ quote: 'Success is not final, failure is not fatal' }];
+    jest.spyOn(window, 'fetch').mockImplementationOnce(() => {
+      return Promise.resolve({
+        json: () => Promise.resolve(mockData),
+      });
+    });
+    render(<Quote />);
+    const quote = await screen.findByText(mockData[0].quote);
+    expect(quote).toBeInTheDocument();
+    window.fetch.mockRestore();
   });
 });
