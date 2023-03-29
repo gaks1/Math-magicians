@@ -153,45 +153,44 @@ describe('operate', () => {
     }
     expect(errorThrown).toBe(true);
   });
+});
+test('matches snapshot', () => {
+  const { asFragment } = render(<Quote />);
+  expect(asFragment()).toMatchSnapshot();
+});
+test('renders quote after loading data', async () => {
+  const mockData = [{ quote: 'Success is not final, failure is not fatal' }];
+  jest.spyOn(window, 'fetch').mockImplementationOnce(() => Promise.resolve({
+    json: () => Promise.resolve(mockData),
+  }));
+  render(<Quote />);
+  const quote = await screen.findByText(mockData[0].quote);
+  expect(quote).toBeInTheDocument();
+  window.fetch.mockRestore();
+});
+describe('Navbar', () => {
+  it('should render Navbar component correctly', () => {
+    const component = renderer.create(
+      <Router>
+        <Navbar />
+      </Router>,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+});
+describe('Home', () => {
+  it('should render Home component correctly', () => {
+    const component = renderer.create(<Home />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+});
 
-  test('matches snapshot', () => {
-    const { asFragment } = render(<Quote />);
-    expect(asFragment()).toMatchSnapshot();
-  });
-  test('renders quote after loading data', async () => {
-    const mockData = [{ quote: 'Success is not final, failure is not fatal' }];
-    jest.spyOn(window, 'fetch').mockImplementationOnce(() => Promise.resolve({
-      json: () => Promise.resolve(mockData),
-    }));
-    render(<Quote />);
-    const quote = await screen.findByText(mockData[0].quote);
-    expect(quote).toBeInTheDocument();
-    window.fetch.mockRestore();
-  });
-  describe('Navbar', () => {
-    it('should render Navbar component correctly', () => {
-      const component = renderer.create(
-        <Router>
-          <Navbar />
-        </Router>,
-      );
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
-    });
-  });
-  describe('Home', () => {
-    it('should render Home component correctly', () => {
-      const component = renderer.create(<Home />);
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
-    });
-  });
-
-  describe('NotFound', () => {
-    it('should render NotFound component correctly', () => {
-      const component = renderer.create(<NotFound />);
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
-    });
+describe('NotFound', () => {
+  it('should render NotFound component correctly', () => {
+    const component = renderer.create(<NotFound />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 });
