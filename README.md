@@ -97,4 +97,4 @@ I would like to thank Microverse!
 
 ## 📝 License
 
-This project is [MIT](./LICENSE) licensed.
+This project is [MIT](MIT.md) licensed.

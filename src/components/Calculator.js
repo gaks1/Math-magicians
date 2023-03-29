@@ -17,16 +17,19 @@ function Calculator() {
   };
 
   return (
-    <div className="calculator">
-      <div id="screen">{data.next || data.total || '0'}</div>
-      <CalculatorButtons button={['AC', '+/-', '%', '÷']} onClick={handleClick} />
-      <CalculatorButtons button={['7', '8', '9', 'x']} onClick={handleClick} />
-      <CalculatorButtons button={['4', '5', '6', '-']} onClick={handleClick} />
-      <CalculatorButtons button={['1', '2', '3', '+']} onClick={handleClick} />
-      <div className="row">
-        <button type="button" className="left-button zero" onClick={() => handleClick('0')}>0</button>
-        <button type="button" className="left-button dot" onClick={() => handleClick('.')}>.</button>
-        <button type="button" className="right-button" onClick={() => handleClick('=')}>=</button>
+    <div className="calcPage">
+      <h2>Let&apos;s do some math!</h2>
+      <div className="calculator">
+        <div id="screen">{data.next || data.total || '0'}</div>
+        <CalculatorButtons button={['AC', '+/-', '%', '÷']} onClick={handleClick} />
+        <CalculatorButtons button={['7', '8', '9', 'x']} onClick={handleClick} />
+        <CalculatorButtons button={['4', '5', '6', '-']} onClick={handleClick} />
+        <CalculatorButtons button={['1', '2', '3', '+']} onClick={handleClick} />
+        <div className="row">
+          <button type="button" className="left-button zero" onClick={() => handleClick('0')}>0</button>
+          <button type="button" className="left-button dot" onClick={() => handleClick('.')}>.</button>
+          <button type="button" className="right-button" onClick={() => handleClick('=')}>=</button>
+        </div>
       </div>
     </div>
   );
