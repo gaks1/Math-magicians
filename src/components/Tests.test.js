@@ -1,14 +1,14 @@
 import { render, fireEvent, screen } from '@testing-library/react';
 import React from 'react';
 import renderer from 'react-test-renderer';
+import { BrowserRouter as Router } from 'react-router-dom';
 import calculate from '../logic/Calculate';
 import operate from '../logic/Operate';
 import '@testing-library/jest-dom';
 import Calculator from './Calculator';
 import Quote from './Quote';
-import { BrowserRouter as Router } from 'react-router-dom';
 import Navbar from './Navbar';
-import Home from './Home.js';
+import Home from './Home';
 import NotFound from './NotFound';
 
 describe('Calculator', () => {
@@ -30,33 +30,33 @@ describe('Calculator component', () => {
 
   test('renders calculator with AC', () => {
     fireEvent.click(
-      screen.getAllByText('1').find((el) => el.tagName === 'BUTTON')
+      screen.getAllByText('1').find((el) => el.tagName === 'BUTTON'),
     );
     fireEvent.click(
-      screen.getAllByText('AC').find((el) => el.tagName === 'BUTTON')
+      screen.getAllByText('AC').find((el) => el.tagName === 'BUTTON'),
     );
     expect(screen.getByTestId('display').textContent).toBe('0');
   });
 
   test('renders calculator with 1', () => {
     fireEvent.click(
-      screen.getAllByText('1').find((el) => el.tagName === 'BUTTON')
+      screen.getAllByText('1').find((el) => el.tagName === 'BUTTON'),
     );
     expect(screen.getByTestId('display').textContent).toBe('1');
   });
 
   test('renders calculator with 1 + 1', () => {
     fireEvent.click(
-      screen.getAllByText('1').find((el) => el.tagName === 'BUTTON')
+      screen.getAllByText('1').find((el) => el.tagName === 'BUTTON'),
     );
     fireEvent.click(
-      screen.getAllByText('+').find((el) => el.tagName === 'BUTTON')
+      screen.getAllByText('+').find((el) => el.tagName === 'BUTTON'),
     );
     fireEvent.click(
-      screen.getAllByText('1').find((el) => el.tagName === 'BUTTON')
+      screen.getAllByText('1').find((el) => el.tagName === 'BUTTON'),
     );
     fireEvent.click(
-      screen.getAllByText('=').find((el) => el.tagName === 'BUTTON')
+      screen.getAllByText('=').find((el) => el.tagName === 'BUTTON'),
     );
     expect(screen.getByTestId('display').textContent).toBe('2');
   });
@@ -160,11 +160,9 @@ describe('operate', () => {
   });
   test('renders quote after loading data', async () => {
     const mockData = [{ quote: 'Success is not final, failure is not fatal' }];
-    jest.spyOn(window, 'fetch').mockImplementationOnce(() => {
-      return Promise.resolve({
-        json: () => Promise.resolve(mockData),
-      });
-    });
+    jest.spyOn(window, 'fetch').mockImplementationOnce(() => Promise.resolve({
+      json: () => Promise.resolve(mockData),
+    }));
     render(<Quote />);
     const quote = await screen.findByText(mockData[0].quote);
     expect(quote).toBeInTheDocument();
@@ -175,7 +173,7 @@ describe('operate', () => {
       const component = renderer.create(
         <Router>
           <Navbar />
-        </Router>
+        </Router>,
       );
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
