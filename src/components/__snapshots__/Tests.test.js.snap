@@ -173,6 +173,48 @@ exports[`Calculator renders correctly 1`] = `
 </div>
 `;
 
+exports[`operate Navbar should render Navbar component correctly 1`] = `
+<nav
+  className="navbar"
+>
+  <h1
+    className="navTitle"
+  >
+    Math Magicians
+  </h1>
+  <ul>
+    <li>
+      <a
+        aria-current="page"
+        className="active"
+        href="/"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+    </li>
+    <li>
+      <a
+        className=""
+        href="/calculator"
+        onClick={[Function]}
+      >
+        calculator
+      </a>
+    </li>
+    <li>
+      <a
+        className=""
+        href="/quote"
+        onClick={[Function]}
+      >
+        quote
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
 exports[`operate matches snapshot 1`] = `
 <DocumentFragment>
   <div

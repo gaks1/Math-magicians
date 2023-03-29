@@ -6,6 +6,8 @@ import operate from '../logic/Operate';
 import '@testing-library/jest-dom';
 import Calculator from './Calculator';
 import Quote from './Quote';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Navbar from './Navbar';
 
 describe('Calculator', () => {
   it('renders correctly', () => {
@@ -165,5 +167,16 @@ describe('operate', () => {
     const quote = await screen.findByText(mockData[0].quote);
     expect(quote).toBeInTheDocument();
     window.fetch.mockRestore();
+  });
+  describe('Navbar', () => {
+    it('should render Navbar component correctly', () => {
+      const component = renderer.create(
+        <Router>
+          <Navbar />
+        </Router>
+      );
+      const tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+    });
   });
 });
