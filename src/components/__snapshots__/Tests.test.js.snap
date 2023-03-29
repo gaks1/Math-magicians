@@ -173,6 +173,28 @@ exports[`Calculator renders correctly 1`] = `
 </div>
 `;
 
+exports[`operate Home should render Home component correctly 1`] = `
+<div
+  className="home"
+>
+  <h2
+    className="homeTitle"
+  >
+    Welcome to our page!
+  </h2>
+  <p
+    className="homeParagraph"
+  >
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+  <p
+    className="homeParagraph"
+  >
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+</div>
+`;
+
 exports[`operate Navbar should render Navbar component correctly 1`] = `
 <nav
   className="navbar"
@@ -213,6 +235,14 @@ exports[`operate Navbar should render Navbar component correctly 1`] = `
     </li>
   </ul>
 </nav>
+`;
+
+exports[`operate NotFound should render NotFound component correctly 1`] = `
+<div>
+  <p>
+    Not found!
+  </p>
+</div>
 `;
 
 exports[`operate matches snapshot 1`] = `

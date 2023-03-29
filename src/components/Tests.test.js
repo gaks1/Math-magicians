@@ -8,6 +8,8 @@ import Calculator from './Calculator';
 import Quote from './Quote';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Navbar from './Navbar';
+import Home from './Home.js';
+import NotFound from './NotFound';
 
 describe('Calculator', () => {
   it('renders correctly', () => {
@@ -175,6 +177,21 @@ describe('operate', () => {
           <Navbar />
         </Router>
       );
+      const tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+  });
+  describe('Home', () => {
+    it('should render Home component correctly', () => {
+      const component = renderer.create(<Home />);
+      const tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+  });
+
+  describe('NotFound', () => {
+    it('should render NotFound component correctly', () => {
+      const component = renderer.create(<NotFound />);
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
