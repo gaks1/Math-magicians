@@ -46,7 +46,7 @@
 
 ## Live Demo
 
-Live demo will be available soon
+[Live demo](https://isaac-math-magicians.onrender.com/)
 
 ## Getting Started
 
